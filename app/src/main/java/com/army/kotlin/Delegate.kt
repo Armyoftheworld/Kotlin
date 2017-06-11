@@ -1,6 +1,8 @@
 package com.army.kotlin
 
 import kotlin.properties.Delegates
+import kotlin.properties.ReadWriteProperty
+import kotlin.reflect.KProperty
 
 /**
  * Created by Army on 2017/06/10.
@@ -33,4 +35,18 @@ fun main(args: Array<String>) {
     }
     str2 = ""
     str2.print()
+}
+
+var p : String by MyDelegate<String>()
+
+class MyDelegate<T> : ReadWriteProperty<Any?, T> {
+    var t: T? = null
+
+    override fun getValue(thisRef: Any?, property: KProperty<*>): T {
+        return t ?: throw NullPointerException("")
+    }
+
+    override fun setValue(thisRef: Any?, property: KProperty<*>, value: T) {
+        t = value
+    }
 }

@@ -51,6 +51,7 @@ object Dialog {
 fun main(args: Array<String>) {
     Dialog.show()
     AlertDialog.B.test()//如果伴生类没有名字，直接用Companion
+    AlertDialog.test()
 //    AlertDialog.Companion.test()
 
     val animal = object : Animal() {
@@ -67,8 +68,17 @@ fun main(args: Array<String>) {
         it.invalidate()
     }
 
+    val myClass = MyClass.create()
+
+
 }
 
 interface onMyClickListener{
     fun test(i: Int, j: Int)
+}
+
+class MyClass {
+    companion object Factory {
+        fun create(): MyClass = MyClass()
+    }
 }
