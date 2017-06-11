@@ -83,4 +83,22 @@ class Sqlhelper(ctx: Context = MyApplication.getInstance(), name: String? = "dat
             parseList(classParser<Gps>())
         }
     }
+
+    fun queryLng(id: Long): List<Double> = use {
+        select(Gps.TABLE_NAME, Gps.LON).whereArgs("${Gps._ID} > {id}", "id" to id).exec {
+            parseList(DoubleParser)
+        }
+    }
+
+    fun deleteById(id: Long){
+        use {
+            delete(Gps.TABLE_NAME, "${Gps._ID} = {id}", "id" to id)
+        }
+    }
+
+    fun updateById(id: Long){
+        use {
+            update(Gps.TABLE_NAME, Gps.PROVIDER to "baidu").whereArgs("${Gps._ID} = {id}", "id" to id).exec()
+        }
+    }
 }
