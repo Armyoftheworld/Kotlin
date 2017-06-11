@@ -20,11 +20,23 @@ import android.view.View
 //internal  同module可见, jar里的类如果用internal修饰，则引入jar的项目不能访问该类
 
 private class AlertDialog {
-    //伴生类
-    companion object B {
+    //伴生类 ,可以继承
+    companion object B : View.OnClickListener{
+        override fun onClick(v: View?) {
+        }
+
+        val value = ""
         fun test() {
 
         }
+    }
+
+    //C相当于一个对象，可以用个C取到name
+    object C : View.OnClickListener{
+        override fun onClick(v: View?) {
+        }
+
+        var name = "Army"
     }
 
     var str = "test"
@@ -52,6 +64,8 @@ fun main(args: Array<String>) {
     Dialog.show()
     AlertDialog.B.test()//如果伴生类没有名字，直接用Companion
     AlertDialog.test()
+    AlertDialog.value.print()
+    AlertDialog.C.name
 //    AlertDialog.Companion.test()
 
     val animal = object : Animal() {
@@ -73,7 +87,7 @@ fun main(args: Array<String>) {
 
 }
 
-interface onMyClickListener{
+interface onMyClickListener {
     fun test(i: Int, j: Int)
 }
 
