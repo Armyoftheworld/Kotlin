@@ -91,7 +91,7 @@ class MyAdapter(val ctc: Context, var items: ArrayList<Resp>): RecyclerView.Adap
 
     override fun onBindViewHolder(holder: MyViewHolder?, position: Int) {
         val resp = items[position]
-        Glide.with(ctc).load(resp.owner.avatar_url).into(holder?.iv)
+        Glide.with(ctc).load(resp.owner?.avatar_url).into(holder?.iv)
         holder?.tv1?.text = resp.name
         holder?.tv2?.text = resp.full_name
     }
