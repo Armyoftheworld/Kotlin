@@ -8,12 +8,13 @@ fun main(args: Array<String>) {
 //    var list = arrayListOf<Int>(1, 2, 3, 4);
     println(list[0])
     println(list.last())
-    for (it in list){
+    for (it in list) {
         println(it)
     }
     list.forEach {
 //        println(it)或者
-        item -> println(item)
+        item ->
+        println(item)
     }
     list.forEachIndexed { index, i -> println("index = ${index}, i = ${i}") }
 
@@ -52,7 +53,7 @@ fun main(args: Array<String>) {
 infix fun <A, B> A.with(that: B): Pair<A, B> = Pair(this, that)
 
 //给String类型的变量设置内联函数
-inline fun String.print(){
+inline fun String.print() {
     println(toString())
 }
 
@@ -60,13 +61,13 @@ inline val String.lastChar: Char
     get() = get(length - 1)
 
 
-fun test(i:Int = 100, j: String = "init"){//赋默认值
+fun test(i: Int = 100, j: String = "init") {//赋默认值
     println("i == ${i}, j == ${j}")
 }
 
 /**
  * 相当于java的test(int... item)
  */
-fun test(vararg item: Int){
+fun test(vararg item: Int) {
     item.forEach { println("test${it}") }
 }

@@ -31,9 +31,12 @@ fun main(args: Array<String>) {
         matchResult.destructured.toList().print()
     }
     "\$path".print()
+
+    println("port = ${"PORT".toIntOrNull()?: 0}")
 }
 
-inline fun <E> List<E>.print() {
+inline fun <E> List<E>.print() : List<E>{
     forEach { print("${it.toString()},") }
-    "".print()
+    println()
+    return this
 }
